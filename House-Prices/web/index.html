@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Homewise · House price estimator</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header><a href="/" class="brand">⌂ <span>homewise</span></a><span class="badge">AMES HOUSING · MODEL DEMO</span></header>
+  <main>
+    <section class="intro"><p class="eyebrow">A LITTLE CLARITY, BEFORE THE BIG MOVE</p><h1>Every home has a story.<br><span>Let’s put a price on yours.</span></h1><p>Tell us about the home you have in mind. Our trained model looks at its details to give you a starting-point estimate.</p></section>
+    <div class="workspace">
+      <form id="house-form" class="card">
+        <div class="section-heading"><div><p class="eyebrow">01 · THE DETAILS</p><h2>Meet your home</h2></div><button type="reset" class="reset">Reset details</button></div>
+        <p class="muted">We’ve filled in typical values to get you started. Change them to match your home.</p>
+        <div id="core-fields" class="fields"></div>
+        <details><summary>Fine-tune the estimate <span>Optional advanced details</span></summary><p class="muted">These are the original Ames dataset fields. Unchanged fields use the training median or most common category. “Not specified” uses the model’s missing-value handling.</p><div id="advanced-fields" class="fields"></div></details>
+        <p id="error" role="alert" hidden></p>
+        <button id="estimate-button" class="primary" type="submit" disabled>Estimate my home’s price <span>↗</span></button>
+        <p class="footnote">Values stay on your local server. Nothing is saved to a database.</p>
+      </form>
+      <aside>
+        <section class="card result"><p class="eyebrow">02 · YOUR ESTIMATE</p><div class="house-icon" aria-hidden="true">⌂</div><p id="result-label">A little more about your home…</p><h2 id="price" aria-live="polite">—</h2><p id="result-note" class="muted">Fill in the details and we’ll do the number-crunching.</p><div class="divider"></div><h3>A guide, not a guarantee</h3><p class="muted">This model learned from historical homes in Ames, Iowa. It is not a current market appraisal and may not reflect prices in your area.</p></section>
+        <section class="note"><p class="eyebrow">BEHIND THE NUMBER</p><h3>Real data. A saved model.</h3><p>The backend loads your training checkpoint and calls <code>predict.py</code> — the same pipeline used for the CSV predictions.</p><p>Inputs are limited to ranges seen in the training data. The record ID uses a fixed training median, not a user-entered identifier.</p></section>
+      </aside>
+    </div>
+  </main>
+  <footer>Built to explore, learn, and make housing data a little more human.</footer>
+</body>
+</html>
